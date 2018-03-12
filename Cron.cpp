@@ -10,16 +10,14 @@
 RTC_DS1307 RTC;
 
 Cron::Cron(TimedCommand **iTimedCommands, int iTimedCommandsSize) {
-	timedCommands = iTimedCommands;
-	timedCommandsSize = iTimedCommandsSize;
-
-	Wire.begin();
-    RTC.begin();
+  timedCommands = iTimedCommands;
+  timedCommandsSize = iTimedCommandsSize;
+  Wire.begin();
+  RTC.begin();
 }
 
 Cron::~Cron() {
 }
-
 
 
 void Cron::loop(){
@@ -34,6 +32,11 @@ void Cron::loop(){
 	if (match){
 		delay(1000);
 	}
+}
+
+void Cron::addTimedCommand(TimedCommand *command) {
+  timedCommands[timedCommandsSize] = command;
+  timedCommandsSize = timedCommandsSize + 1;
 }
 
 DateTime Cron::getTime(){

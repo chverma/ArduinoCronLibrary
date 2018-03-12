@@ -20,6 +20,7 @@ public:
 	void printTime();
 	void setTime(DateTime);
 	boolean matchCron(String,DateTime);
+  void addTimedCommand(TimedCommand *);
 private:
 	TimedCommand **timedCommands;
 	int timedCommandsSize;
