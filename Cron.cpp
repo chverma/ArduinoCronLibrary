@@ -43,7 +43,26 @@ DateTime Cron::getTime(){
 	  DateTime now = RTC.now();
 	  return now;
 }
+// Returns -2 if the inputVal not in cronString else return -1
+int Cron::valueIn(int inputVal, String cronString) {
+  int idx;
+  int value;
+  int retVal = -2;
+  // Remove first and last chars '[' & ']'
+  cronString = cronString.substring(1, cronString.length()-1);
 
+  do {
+    idx = cronString.indexOf(',');
+    value = cronString.substring(0, idx).toInt();
+    cronString = cronString.substring(idx+1);
+    if (value == inputVal){
+      retVal = -1;
+      idx = -1;
+    }
+  } while (idx > 0);
+
+  return retVal;
+}
 boolean Cron::matchCron(String cronString, DateTime time){
 	  boolean secMatch,minMatch,hourMatch,dayMatch,monMatch,yearMatch;
 	  String tempTimeString;
@@ -53,7 +72,9 @@ boolean Cron::matchCron(String cronString, DateTime time){
 	  tempTimeString = cronString.substring(0,cronString.indexOf('.'));
 	  if (tempTimeString.equals("*")) {
 	    cronTime[0] = -1;
-	  } else {
+	  } else if(tempTimeString.startsWith("[")){
+      cronTime[0] = valueIn(time.second(), tempTimeString);
+    } else {
 	    cronTime[0] = tempTimeString.toInt();
 	  }
 	  cronString.trim();
@@ -61,35 +82,45 @@ boolean Cron::matchCron(String cronString, DateTime time){
 	  tempTimeString = cronString.substring(0,cronString.indexOf('.'));
 	  if (tempTimeString.equals("*")) {
 	    cronTime[1] = -1;
-	  } else {
+    } else if(tempTimeString.startsWith("[")){
+      cronTime[1] = valueIn(time.minute(), tempTimeString);
+    } else {
 	    cronTime[1] = tempTimeString.toInt();
 	  }
 	  cronString = cronString.substring(cronString.indexOf('.') + 1);
 	  tempTimeString = cronString.substring(0,cronString.indexOf('.'));
 	  if (tempTimeString.equals("*")) {
 	    cronTime[2] = -1;
-	  } else {
+    } else if(tempTimeString.startsWith("[")){
+      cronTime[2] = valueIn(time.hour(), tempTimeString);
+    } else {
 	    cronTime[2] = tempTimeString.toInt();
 	  }
 	  cronString = cronString.substring(cronString.indexOf('.') + 1);
 	  tempTimeString = cronString.substring(0,cronString.indexOf('.'));
 	  if (tempTimeString.equals("*")) {
 	    cronTime[3] = -1;
-	  } else {
+    } else if(tempTimeString.startsWith("[")){
+      cronTime[3] = valueIn(time.day(), tempTimeString);
+    } else {
 	    cronTime[3] = tempTimeString.toInt();
 	  }
 	  cronString = cronString.substring(cronString.indexOf('.') + 1);
 	  tempTimeString = cronString.substring(0,cronString.indexOf('.'));
 	  if (tempTimeString.equals("*")) {
 	    cronTime[4] = -1;
-	  } else {
+    } else if(tempTimeString.startsWith("[")){
+      cronTime[4] = valueIn(time.month(), tempTimeString);
+    } else {
 	    cronTime[4] = tempTimeString.toInt();
 	  }
 	  cronString = cronString.substring(cronString.indexOf('.') + 1);
 	  tempTimeString = cronString.substring(0,cronString.indexOf('.'));
 	  if (tempTimeString.equals("*")) {
 	    cronTime[5] = -1;
-	  } else {
+    } else if(tempTimeString.startsWith("[")){
+      cronTime[5] = valueIn(time.year(), tempTimeString);
+    } else {
 	    cronTime[5] = tempTimeString.toInt();
 	  }
 	  cronString = cronString.substring(cronString.indexOf('.') + 1);

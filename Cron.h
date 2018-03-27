@@ -21,6 +21,7 @@ public:
 	void setTime(DateTime);
 	boolean matchCron(String,DateTime);
   void addTimedCommand(TimedCommand *);
+  int valueIn(int, String);
 private:
 	TimedCommand **timedCommands;
 	int timedCommandsSize;
