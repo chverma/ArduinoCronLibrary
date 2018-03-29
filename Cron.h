@@ -2,7 +2,7 @@
  * Cron.h
  *
  *  Created on: 7 Jun 2012
- *      Author: fletcherb
+ *    Author: fletcherb
  */
 
 #ifndef CRON_H_
@@ -14,18 +14,18 @@
 
 class Cron {
 public:
-	Cron(TimedCommand **,int); // Get pointer to array of pointers
-	virtual ~Cron();
-	void loop();
-	void printTime();
-	void setTime(DateTime);
-	boolean matchCron(String,DateTime);
+  Cron(TimedCommand **,int); // Get pointer to array of pointers
+  virtual ~Cron();
+  void loop();
+  void printTime();
+  void setTime(DateTime);
+  boolean matchCron(String,DateTime);
   void addTimedCommand(TimedCommand *);
   int valueIn(int, String);
 private:
-	TimedCommand **timedCommands;
-	int timedCommandsSize;
-	DateTime getTime();
+  TimedCommand **timedCommands;
+  int timedCommandsSize;
+  DateTime getTime();
 };
 
 #endif /* CRON_H_ */

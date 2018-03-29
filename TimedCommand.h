@@ -2,9 +2,9 @@
  * TimedCommand.h
  *
  *  Created on: 7 Jun 2012
- *      Author: fletcherb
+ *    Author: fletcherb
  *  Modified on: 27 Mar 2018
- *      Contributor: chverma
+ *    Contributor: chverma
  */
 
 #ifndef TIMEDCOMMAND_H_
@@ -13,23 +13,23 @@
 #include <RTClib.h>
 class TimedCommand {
 public:
-	TimedCommand(String, Command*);
-	TimedCommand(String, Command*,String);
+  TimedCommand(String, Command*);
+  TimedCommand(String, Command*,String);
   TimedCommand(String, Command*,String, bool, int);
-	virtual ~TimedCommand();
-	void setCronString(String);
-	void setCommand(Command*);
-	void setParameters(String);
+  virtual ~TimedCommand();
+  void setCronString(String);
+  void setCommand(Command*);
+  void setParameters(String);
   void setExecuted(bool, DateTime);
-	Command* getCommand();
-	String getCronString();
-	String getParameters();
+  Command* getCommand();
+  String getCronString();
+  String getParameters();
   bool done(DateTime);
 
 private:
-	Command *command;
-	String cronString;
-	String parameters;
+  Command *command;
+  String cronString;
+  String parameters;
   bool executed;
   bool oneShot;
   int tMode;

@@ -2,7 +2,7 @@
  * SwitchOffCommand.h
  *
  *  Created on: 6 Jun 2012
- *      Author: fletcherb
+ *    Author: fletcherb
  */
 
 #ifndef SWITCHOFFCOMMAND_H_
@@ -13,9 +13,9 @@
 
 class SwitchOffCommand: public Command {
 public:
-	SwitchOffCommand();
-	virtual ~SwitchOffCommand();
-	void execute(String parameter);
+  SwitchOffCommand();
+  virtual ~SwitchOffCommand();
+  void execute(String parameter);
 };
 
 #endif /* SWITCHOFFCOMMAND_H_ */

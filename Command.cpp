@@ -2,23 +2,22 @@
  * SwitchOnCommand.cpp
  *
  *  Created on: 5 Jun 2012
- *      Author: fletcherb
+ *    Author: fletcherb
  */
 
 #include "Command.h"
 
 Command::Command() {
-	instruction = "default";
+  instruction = "default";
 }
 
 Command::~Command() {
 }
 
 String Command::getInstruction(){
-	return instruction;
+  return instruction;
 }
 
 void Command::execute(String parameter){
-	Serial.println("test");
+  Serial.println("test");
 };
-

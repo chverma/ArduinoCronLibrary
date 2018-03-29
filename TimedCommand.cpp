@@ -2,33 +2,33 @@
  * TimedCommand.cpp
  *
  *  Created on: 7 Jun 2012
- *      Author: fletcherb
+ *    Author: fletcherb
  *  Modified on: 27 Mar 2018
- *      Contributor: chverma
+ *    Contributor: chverma
  */
 
 #include "TimedCommand.h"
 
 TimedCommand::TimedCommand(String iCronString, Command *iCommand) {
-	cronString = iCronString;
-	command = iCommand;
+  cronString = iCronString;
+  command = iCommand;
   executed = false;
   oneShot = false;
 }
 
 TimedCommand::TimedCommand(String iCronString, Command *iCommand,String iParameters) {
-	cronString = iCronString;
-	command = iCommand;
-	parameters = iParameters;
+  cronString = iCronString;
+  command = iCommand;
+  parameters = iParameters;
   executed = false;
   oneShot = false;
   tMode = -1;
 }
 
 TimedCommand::TimedCommand(String iCronString, Command *iCommand, String iParameters, bool oneShotP, int tModeP) {
-	cronString = iCronString;
-	command = iCommand;
-	parameters = iParameters;
+  cronString = iCronString;
+  command = iCommand;
+  parameters = iParameters;
   executed = false;
   oneShot = oneShotP;
   tMode = tModeP;
@@ -45,27 +45,27 @@ void TimedCommand::setExecuted(bool exec, DateTime tm){
 }
 
 void TimedCommand::setCronString(String iCronString){
-	cronString = iCronString;
+  cronString = iCronString;
 }
 
 void TimedCommand::setCommand(Command *iCommand){
-	command = iCommand;
+  command = iCommand;
 }
 
 String TimedCommand::getCronString(){
-	return cronString;
+  return cronString;
 }
 
 Command* TimedCommand::getCommand(){
-	return command;
+  return command;
 }
 
 String TimedCommand::getParameters(){
-	return parameters;
+  return parameters;
 }
 
 void TimedCommand::setParameters(String iParameters){
-	parameters = iParameters;
+  parameters = iParameters;
 }
 
 bool TimedCommand::done(DateTime tm){

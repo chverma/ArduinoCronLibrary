@@ -2,7 +2,7 @@
  * SwitchOnCommand.h
  *
  *  Created on: 5 Jun 2012
- *      Author: fletcherb
+ *    Author: fletcherb
  */
 
 #ifndef SWITCHONCOMMAND_H_
@@ -14,9 +14,9 @@
 
 class SwitchOnCommand: public Command {
 public:
-	SwitchOnCommand();
-	virtual ~SwitchOnCommand();
-	void execute(String parameter);
+  SwitchOnCommand();
+  virtual ~SwitchOnCommand();
+  void execute(String parameter);
 };
 
 #endif /* SWITCHONCOMMAND_H_ */
