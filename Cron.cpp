@@ -3,6 +3,8 @@
  *
  *  Created on: 7 Jun 2012
  *      Author: fletcherb
+ *  Modified on: 27 Mar 2018
+ *      Contributor: chverma
  */
 
 #include "Cron.h"
@@ -23,9 +25,11 @@ Cron::~Cron() {
 void Cron::loop(){
 	bool match = false;
 	for (int i = 0; i< timedCommandsSize; i++){
-		if (matchCron(timedCommands[i]->getCronString(),getTime())){
+    DateTime t = getTime();
+		if (!timedCommands[i]->done(t) && matchCron(timedCommands[i]->getCronString(), t)){
 			Command *command = timedCommands[i]->getCommand();
 			command->execute(timedCommands[i]->getParameters());
+      timedCommands[i]->setExecuted(true, t);
 			match = true;
 		}
 	}
